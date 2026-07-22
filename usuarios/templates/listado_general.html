@@ -1,0 +1,67 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block title %}Dashboard - ReserVa{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+<div class="container-fluid mt-4 text-white">
+    <h2 class="mb-4">Listado General de Usuarios</h2>
+
+    <table id="tablaDeBryan" class="table table-dark table-hover align-middle">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Nombre Completo</th>
+                <th>Correo Electrónico</th>
+                <th>Rol</th>
+                <th>Estado</th> <th>Acciones</th> </tr>
+        </thead>
+        <tbody>
+            {% for u in usuarios %}
+                <tr>
+                    <td>{{ u.usuario }}</td>
+                    <td>{{ u.nombre }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>
+                        <span class="badge bg-secondary">{{ u.rol }}</span>
+                    </td>
+                    <td>
+                        {% if "[SUSPENDIDO]" in u.nombre %}
+                            <span class="badge bg-danger"> Suspendido</span>
+                        {% else %}
+                            <span class="badge bg-success"> Activo</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if "[SUSPENDIDO]" in u.nombre %}
+                            <a href="{% url 'cambiar_estado_usuario' u.id %}" class="btn btn-sm btn-success py-1 px-3" style="font-size: 0.85rem;">
+                                 Activar
+                            </a>
+                        {% else %}
+                            <a href="{% url 'cambiar_estado_usuario' u.id %}" class="btn btn-sm btn-outline-danger py-1 px-3" style="font-size: 0.85rem;">
+                                 Suspender
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#tablaDeBryan').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,220 @@
+/* ========================================================
+   1. ESTILOS GENERALES Y GLOBAL (Tu base original)
+   ======================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #4a0404; /* Tu vinotinto original */
+    color: #ffffff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+
+.logo h1 {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #800020;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 40px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #fff;
+}
+
+/* Tus botones dorados */
+.btn-reserva, .btn-registro {
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.btn-reserva:hover, .btn-registro:hover {
+    background-color: #d4af37;
+    color: #1a1a1a;
+}
+
+/* Contenedor principal de Django */
+.contenedor {
+    padding: 40px 5%;
+    flex: 1; /* Empuja el footer al fondo */
+}
+
+.pie-pagina {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    color: #666;
+    font-size: 12px;
+}
+
+/* Formulario genérico */
+.mi-formulario {
+    width: 350px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #8f7325;
+    border-radius: 8px;
+}
+
+.mi-formulario h2 { color: #ffffff; text-align: center; }
+.mi-formulario p { margin: 10px 0 5px 0; font-weight: bold; color: #ffffff; }
+.mi-formulario input, .mi-formulario textarea {
+    width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;
+}
+.mi-formulario button {
+    width: 100%; padding: 12px; margin-top: 20px; background-color: #ECB306;
+    color: #000; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;
+}
+.mi-formulario button:hover { background-color: #4B0A11; color: white; }
+
+
+/* ========================================================
+   2. ESTILOS EXCLUSIVOS DE LA LANDING PAGE
+   ======================================================== */
+
+/* Contenedor de la Landing */
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem; /* Da aire y espacio para que no se amontone nada */
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Sección Hero (Bienvenida) */
+.hero-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #300202 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 16px;
+    padding: 5rem 2rem;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.btn-menu-landing {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+.btn-menu-landing:hover { color: #d4af37; }
+
+/* Sección de Tarjetas (Grid para evitar amontonamiento) */
+.features-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.feature-card {
+    background: #111111;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: #d4af37;
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
+}
+
+.feature-icon { font-size: 3rem; }
+.feature-card h3 { color: #d4af37; font-size: 1.3rem; }
+.feature-card p { color: #aaa; font-size: 0.95rem; line-height: 1.5; }
+
+/* Sección CTA (Registro) */
+.cta-section {
+    background: #1a1a1a;
+    border-left: 6px solid #ECB306;
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.cta-content h3 { font-size: 1.8rem; color: #ffffff; }
+.cta-content p { color: #ccc; }
+.cta-buttons { display: flex; align-items: center; gap: 1.5rem; }
+.cta-or { color: #777; font-style: italic; }

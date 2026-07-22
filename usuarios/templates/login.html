@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicia Sesión - ReserVa{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/formularios.css' %}">
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'inicio' %}" class="back-button-link">← Volver</a>
+
+<div class="form-container">
+    <div class="mi-formulario">
+        <h2>Iniciar Sesión</h2>
+        <p class="form-subtitle">Por favor, introduzca su usuario y contraseña:</p>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <p>
+                <label for="usuario">Usuario:</label>
+                <input type="text" placeholder="Usuario" required="" name="usuario" id="usuario"/>
+            </p>
+
+            <p>
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" placeholder="Contraseña" required="" name="contraseña" id="contraseña"/>
+            </p>
+
+            <button type="submit">Iniciar Sesión</button>
+
+            <div class="form-footer-link">
+                <p>¿No tienes cuenta?</p>
+                <a href="{% url 'crear_usuario' %}">Crea una</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

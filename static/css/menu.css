@@ -1,0 +1,116 @@
+/* ========================================================
+   ESTILOS PREMIUM PARA LA CARTA - RESERVA
+   ======================================================== */
+
+.menu-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Botón Volver */
+.back-button-link {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.back-button-link:hover {
+    color: #d4af37;
+}
+
+/* Títulos principales */
+.menu-main-title {
+    color: #d4af37; /* Dorado ReserVa */
+    text-align: center;
+    font-size: 38px;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.menu-subtitle {
+    text-align: center;
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+/* Contenedor de las categorías */
+.menu-sections-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* Título de cada sección (Entradas, Bebidas, etc.) */
+.category-title {
+    color: #ffffff;
+    font-size: 24px;
+    border-left: 5px solid #d4af37; /* Línea dorada vertical */
+    padding-left: 15px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* Grilla de platos responsive */
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 0;
+    list-style: none;
+}
+
+/* Tarjeta individual de cada plato */
+.dish-card {
+    background: #1a1a1a; /* Fondo oscuro premium */
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto de elevación e iluminación al pasar el mouse */
+.dish-card:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37; /* El borde cambia a dorado */
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+}
+
+/* Cabecera del plato (Nombre y Precio) */
+.dish-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.dish-name {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dish-price {
+    color: #d4af37;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Descripción del plato */
+.dish-description {
+    color: #aaaaaa;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}

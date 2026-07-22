@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Mis Reservas | ReservA{% endblock %}
+
+{% block content %}
+<div class="contenedor">
+    <h2 style="text-align: center; color: #fff; margin-bottom: 20px;">Mis Reservas</h2>
+
+    <div class="lista-reservas">
+        {% for r in reservas %}
+        <div class="reserva-card" style="background: #1a1a1a; border: 1px solid #333; padding: 20px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+            
+            <div class="reserva-info">
+                <h3 style="color: #d4af37; margin: 0;">{{ r.nombre }}</h3>
+                <p style="color: #ccc; margin: 0;">Fecha: {{ r.fecha }} | Mesa: {{ r.mesa }}</p>
+            </div>
+
+            <div class="reserva-acciones" style="display: flex; gap: 10px;">
+                <a href="{% url 'actualizar' r.id %}" style="padding: 8px 15px; border: 1px solid #d4af37; color: #d4af37; text-decoration: none; border-radius: 5px;">Editar</a>
+                <a href="#"  style="padding: 8px 15px; border: 1px solid #800020; color: #ff6b6b; text-decoration: none; border-radius: 5px;"
+   onclick="Swal.fire({
+       title: '¿Estás seguro?',
+       text: 'Esta reserva se eliminará permanentemente.',
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#800020',
+       cancelButtonColor: '#333',
+       background: '#1a1a1a',
+       color: '#ffffff',
+       confirmButtonText: 'Sí, cancelar'
+   }).then((result) => {
+       if (result.isConfirmed) {
+           window.location.href = '{% url 'cancelar' r.id %}';
+       }
+   })" 
+   class="btn-eliminar">Cancelar</a>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

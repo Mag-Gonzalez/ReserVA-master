@@ -1,0 +1,78 @@
+/* ========================================================
+   3. ESTILOS PARA GESTIÓN DE RESERVAS (Mis Reservas)
+   ======================================================== */
+
+/* Contenedor principal de la lista */
+.lista-reservas {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Tarjeta individual de reserva (basada en tu feature-card) */
+.reserva-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.reserva-card:hover {
+    border-color: #d4af37;
+}
+
+.reserva-info h3 {
+    color: #d4af37;
+    margin-bottom: 0.5rem;
+}
+
+.reserva-info p {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Contenedor de botones (Editar/Eliminar) */
+.reserva-acciones {
+    display: flex;
+    gap: 10px;
+}
+
+/* Botón de Editar */
+.btn-editar {
+    background-color: transparent;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-editar:hover {
+    background-color: #d4af37;
+    color: #1a1a1a;
+}
+
+/* Botón de Eliminar (toque de alerta) */
+.btn-eliminar {
+    background-color: transparent;
+    border: 1px solid #800020; /* Vinotinto para que contraste */
+    color: #ff4d4d;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-eliminar:hover {
+    background-color: #800020;
+    color: white;
+}

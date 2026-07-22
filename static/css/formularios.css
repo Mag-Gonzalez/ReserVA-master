@@ -1,0 +1,43 @@
+/* Nuevos estilos para limpiar el HTML de Login y Registro */
+.back-button-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.back-button-link:hover {
+    color: #d4af37;
+}
+
+.form-subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.form-footer-link {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.form-footer-link p {
+    display: inline;
+    color: #aaa;
+}
+
+.form-footer-link a {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+    transition: 0.3s;
+}
+
+.form-footer-link a:hover {
+    text-decoration: underline;
+}

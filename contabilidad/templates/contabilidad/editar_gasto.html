@@ -1,0 +1,59 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block title %}Editar Gasto - ReserVa{% endblock %}
+
+{% block content %}
+
+<h1>Editar Gasto</h1>
+<p>ID: #{{ gasto.id }}</p>
+
+<!-- Formulario limpio que apunta a la vista con el ID del gasto -->
+<form action="{% url 'editar_gasto' gasto.id %}" method="POST">
+    {% csrf_token %}
+
+    <!-- Concepto -->
+    <div>
+        <label for="concepto">Concepto:</label>
+        <input type="text" id="concepto" name="concepto" value="{{ gasto.concepto }}" required>
+    </div>
+
+    <!-- Categoría -->
+    <div>
+        <label for="categoria">Categoría:</label>
+        <input type="text" id="categoria" name="categoria" value="{{ gasto.categoria }}" required>
+    </div>
+
+    <!-- Valor -->
+    <div>
+        <label for="valor">Valor ($):</label>
+        <input type="number" step="0.01" id="valor" name="valor" value="{{ gasto.valor }}" required>
+    </div>
+
+    <!-- Fecha -->
+    <div>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" value="{{ gasto.fecha|date:'Y-m-d' }}" required>
+    </div>
+
+    <!-- Método de Pago -->
+    <div>
+        <label for="metodo_pago">Método de Pago:</label>
+        <select id="metodo_pago" name="metodo_pago" required>
+            <option value="Efectivo" {% if gasto.metodo_pago == "Efectivo" %}selected{% endif %}>Efectivo</option>
+            <option value="Transferencia" {% if gasto.metodo_pago == "Transferencia" %}selected{% endif %}>Transferencia</option>
+            <option value="Tarjeta" {% if gasto.metodo_pago == "Tarjeta" %}selected{% endif %}>Tarjeta</option>
+        </select>
+    </div>
+
+    <br>
+
+    <!-- Botones de Acción -->
+    <div>
+        <!-- Cambié el enlace de cancelar a 'inicio_contabilidad' como lo tenías en tu código original -->
+        <a href="{% url 'inicio_contabilidad' %}">Cancelar</a>
+        <button type="submit">Guardar Cambios</button>
+    </div>
+</form>
+
+{% endblock %}

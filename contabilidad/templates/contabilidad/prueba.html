@@ -1,0 +1,117 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block title %}Dashboard - ReserVa{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <!-- Pon esto arriba de tu tabla de gastos -->
+<div>
+    <!-- Tarjeta 1 -->
+    <div>
+        <strong>Gasto Total:</strong>
+        <span>${{ gasto_total }}</span>
+    </div>
+
+    <!-- Tarjeta 2 -->
+    <div>
+        <strong>Gasto en Efectivo:</strong>
+        <span>${{ gasto_efectivo }}</span>
+    </div>
+
+    <!-- Tarjeta 3 -->
+    <div>
+        <strong>Gasto en Banco:</strong>
+        <span>${{ gasto_banco }}</span>
+    </div>
+</div>
+
+<hr> <!-- Una línea para separar las tarjetas de la tabla -->
+
+<div class="container-fluid mt-4 text-white">
+    <h2 class="mb-4">Listado de Gastos</h2>
+
+    <table id="tabla_gastos" class="table table-dark table-hover align-middle">
+        <thead>
+            <tr>
+                <th>Concepto</th>
+                <th>Categoría</th>
+                <th>Valor</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Método de Pago</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for g in gastos %}
+                <tr>
+                    <td>{{ g.concepto }}</td>
+                    <td>{{ g.categoria }}</td>
+                    <td>${{ g.valor }}</td>
+                    <td>{{ g.fecha }}</td>
+                    <td>{{ g.hora }}</td>
+                    <td>{{ g.metodo_pago }}</td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <a href="{% url 'editar_gasto' g.id %}" class="btn btn-warning btn-sm">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <!-- Botón con su respectiva clase y el href de Django -->
+                            <a href="{% url 'eliminar_gasto' g.id %}" class="btn btn-danger btn-sm btn-eliminar">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted">No hay gastos registrados.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Scripts necesarios -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Inicialización de tu DataTables en español
+        $('#tabla_gastos').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"
+            }
+        });
+
+        // 1. Escuchamos el clic de forma blindada con delegación de eventos
+        $('#tabla_gastos').on('click', '.btn-eliminar', function(e) {
+            e.preventDefault(); // Detiene el viaje inmediato del enlace
+
+            let url = $(this).attr('href'); // Guarda la ruta en el "papelito"
+
+            // 2. Dispara el SweetAlert sencillo y sin enredos de JavaScript complejo
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "¡No podrás revertir este gasto eliminado!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#FFC107", // Amarillo corporativo de ReserVa
+                cancelButtonColor: "#d33",     // Rojo de peligro/cancelar
+                confirmButtonText: "Sí, ¡bórralo!",
+                cancelButtonText: "Cancelar",
+                background: "#1e1e1e",         // Fondo dark impecable
+                color: "#ffffff"               // Texto blanco
+            }).then((result) => {
+                // 3. Si confirma la acción, se redirige a la URL guardada
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
