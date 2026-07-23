@@ -1,16 +1,18 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}ReservA{% endblock %}</title>
+    <title>{% block title %}ReserVa - Medellín{% endblock %}</title>
+    
+    <!-- CSS Global del proyecto -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    
+    <!-- CSS Extra solo para páginas que lo necesiten (como la landing o el menú) -->
+    {% block extra_css %}{% endblock %}
 
-    {% block extra_css %}
-    {% endblock %}
-
+    <!-- SweetAlert2 para mensajes -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
@@ -18,40 +20,39 @@
 
     <header class="navbar">
         <div class="logo">
-            <h1>Reser<span>Va</span></h1>
+            <a href="{% url 'inicio' %}"><h1>Reser<span>Va</span></h1></a>
         </div>
 
         <nav class="nav-menu">
             <ul class="nav-links">
+                <!-- 1. INICIO -->
                 <li><a href="{% url 'inicio' %}">Inicio</a></li>
+                
+                <!-- 2. MENÚ -->
                 <li><a href="{% url 'ver_carta' %}">Menú</a></li>
 
-                <!-- MENÚS EXCLUSIVOS PARA EL CLIENTE LOGUEADO -->
-                {% if request.session.logueado and request.session.logueado.rol == "cliente" %}
-                    <li><a href="{% url 'mis_reservas' %}">Mis Reservas</a></li>
-                    <li><a href="{% url 'comentarios:crear_resena' %}">Reseñar</a></li>
-                {% endif %}
-
-                <!-- BOTÓN DINÁMICO DE RESERVAR -->
-                {% if request.session.logueado %}
-                    {% if request.session.logueado.rol != "admin" %}
-                        <li><a href="{% url 'crear_reserva' %}" class="btn-reserva">Reservar</a></li>
-                    {% endif %}
-                {% else %}
+                <!-- 3. RESERVAR (Dinámico según sesión) -->
+                {% if request.session.logueado and request.session.logueado.rol != "admin" %}
+                    <li><a href="{% url 'crear_reserva' %}" class="btn-reserva">Reservar</a></li>
+                {% elif not request.session.logueado %}
                     <li><a href="{% url 'iniciar_sesion' %}" class="btn-reserva">Reservar</a></li>
                 {% endif %}
 
-                <!-- PANEL DE USUARIO / LOGIN -->
+                <!-- 4. ENTRAR / REGISTRO (O panel de usuario si ya está logueado) -->
                 {% if request.session.logueado %}
-                <li>
-                    <span style="color: #ffc107; font-weight: bold; margin-right: 15px;">
-                        Hola, {{ request.session.logueado.nombre }}
-                    </span>
-                    <a href="{% url 'cerrar_sesion' %}" class="btn-registro">Logout</a>
-                </li>
+                    <!-- Opciones extra solo para clientes -->
+                    {% if request.session.logueado.rol == "cliente" %}
+                        <li><a href="{% url 'mis_reservas' %}">Mis Reservas</a></li>
+                        <li><a href="{% url 'comentarios:crear_resena' %}">Reseñar</a></li>
+                    {% endif %}
+                    
+                    <li class="user-info">
+                        <span>Hola, {{ request.session.logueado.nombre }}</span>
+                        <a href="{% url 'cerrar_sesion' %}" class="btn-registro">Salir</a>
+                    </li>
                 {% else %}
-                <li><a href="{% url 'iniciar_sesion' %}">Entrar</a></li>
-                <li><a href="{% url 'crear_usuario' %}" class="btn-registro">Registro</a></li>
+                    <li><a href="{% url 'iniciar_sesion' %}">Entrar</a></li>
+                    <li><a href="{% url 'crear_usuario' %}" class="btn-registro">Registro</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -63,7 +64,7 @@
     </main>
 
     <footer class="pie-pagina">
-        <p>&copy; 2026 ReservA - Medellín</p>
+        <p>&copy; 2026 ReserVa - Medellín. Todos los derechos reservados.</p>
     </footer>
 
     {% if messages %}
@@ -72,13 +73,13 @@
         Swal.fire({
             text: "{{ message }}",
             icon: "{{ message.tags }}",
-            confirmButtonColor: "#8f7325",
+            confirmButtonColor: "#D4AF37",
             background: "#1a1a1a",
-            color: "#ffffff"
+            color: "#ffffff",
+            fontFamily: "'Montserrat', sans-serif"
         });
         {% endfor %}
     </script>
     {% endif %}
 </body>
-
 </html>

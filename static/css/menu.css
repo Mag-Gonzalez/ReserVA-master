@@ -1,116 +1,254 @@
 /* ========================================================
-   ESTILOS PREMIUM PARA LA CARTA - RESERVA
+   1. FUENTES Y VARIABLES (Consistencia con el resto de la app)
    ======================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-card: #141414;
+    --color-vino: #4a0404;
+    --color-vino-light: #722F37;
+    --color-arena: #D4AF37;
+    --color-arena-light: #E6C27A;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+/* ========================================================
+   2. NAVBAR PARA PÁGINAS INTERNAS (Sticky, no absoluto)
+   ======================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    position: sticky; /* Se queda fijo al hacer scroll */
+    top: 0;
+    z-index: 1000;
+}
+
+.logo h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--text-primary);
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+.logo h1 a { text-decoration: none; color: inherit; }
+.logo span { color: var(--color-arena); font-style: italic; }
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover { color: var(--color-arena); }
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-arena);
+    transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.user-info { display: flex; align-items: center; gap: 1rem; }
+.user-info span { color: var(--color-arena); font-weight: 600; font-size: 0.9rem; }
+
+.btn-reserva, .btn-registro {
+    border: 1px solid var(--color-arena);
+    color: var(--color-arena) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.btn-reserva:hover, .btn-registro:hover {
+    background-color: var(--color-arena);
+    color: var(--bg-dark) !important;
+}
+.btn-reserva::after, .btn-registro::after { display: none; }
+
+/* ========================================================
+   3. ESTILOS ESPECÍFICOS DE LA PÁGINA DEL MENÚ
+   ======================================================== */
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+}
 
 .menu-page-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 3rem 5% 6rem;
 }
 
 /* Botón Volver */
-.back-button-link {
-    display: inline-block;
-    color: #ffffff;
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-arena);
     text-decoration: none;
-    font-weight: bold;
-    margin-bottom: 20px;
-    transition: 0.3s;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+    transition: all 0.3s ease;
 }
 
-.back-button-link:hover {
-    color: #d4af37;
+.back-button .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
 }
 
-/* Títulos principales */
-.menu-main-title {
-    color: #d4af37; /* Dorado ReserVa */
+.back-button:hover {
+    color: var(--color-arena-light);
+}
+.back-button:hover .arrow {
+    transform: translateX(-5px);
+}
+
+/* Encabezado del Menú */
+.menu-header {
     text-align: center;
-    font-size: 38px;
-    letter-spacing: 2px;
-    margin-top: 10px;
-    text-transform: uppercase;
+    margin-bottom: 4rem;
+}
+
+.menu-main-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
 }
 
 .menu-subtitle {
-    text-align: center;
-    color: #ccc;
-    font-size: 16px;
-    margin-bottom: 50px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
-/* Contenedor de las categorías */
+/* Secciones y Títulos de Categoría */
 .menu-sections-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 4rem;
 }
 
-/* Título de cada sección (Entradas, Bebidas, etc.) */
 .category-title {
-    color: #ffffff;
-    font-size: 24px;
-    border-left: 5px solid #d4af37; /* Línea dorada vertical */
-    padding-left: 15px;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
-}
-
-/* Grilla de platos responsive */
-.dishes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    padding: 0;
-    list-style: none;
-}
-
-/* Tarjeta individual de cada plato */
-.dish-card {
-    background: #1a1a1a; /* Fondo oscuro premium */
-    border: 1px solid #444;
-    border-radius: 12px;
-    padding: 25px;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-arena);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Grid de Platos */
+.dishes-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Tarjeta de Plato */
+.dish-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Efecto de elevación e iluminación al pasar el mouse */
 .dish-card:hover {
-    transform: translateY(-5px);
-    border-color: #d4af37; /* El borde cambia a dorado */
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+    border-color: var(--color-arena);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Cabecera del plato (Nombre y Precio) */
 .dish-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 15px;
-    margin-bottom: 12px;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+    gap: 1rem;
 }
 
 .dish-name {
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: bold;
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .dish-price {
-    color: #d4af37;
-    font-size: 18px;
-    font-weight: bold;
-    white-space: nowrap;
+    color: var(--color-arena);
+    font-weight: 600;
+    font-size: 1.1rem;
+    white-space: nowrap; /* Evita que el precio se parta en dos líneas */
 }
 
-/* Descripción del plato */
 .dish-description {
-    color: #aaaaaa;
-    font-size: 14px;
-    line-height: 1.5;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
     margin: 0;
+}
+
+/* ========================================================
+   4. RESPONSIVE (Móviles)
+   ======================================================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .menu-page-container {
+        padding: 2rem 1.5rem 4rem;
+    }
+    .dishes-grid {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+    }
+    .dish-header {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
 }

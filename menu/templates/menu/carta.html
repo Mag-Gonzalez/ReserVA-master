@@ -1,24 +1,30 @@
-
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Dashboard - ReserVa{% endblock %}
+{% block title %}Nuestra Carta - ReserVa{% endblock %}
 
 {% block extra_css %}
+    <!-- Cargamos el CSS exclusivo para la página del menú -->
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="menu-page-container">
     
-    <a href="{% url 'inicio' %}" class="back-button-link">← Volver al Inicio</a>
+    <!-- Botón de retorno elegante -->
+    <a href="{% url 'inicio' %}" class="back-button">
+        <span class="arrow">←</span> Volver al Inicio
+    </a>
     
-    <h1 class="menu-main-title">Nuestra Carta</h1>
-    <p class="menu-subtitle">Disfruta de nuestra exclusiva selección de platos y bebidas</p>
+    <header class="menu-header">
+        <h1 class="menu-main-title">Nuestra Carta</h1>
+        <p class="menu-subtitle">Disfruta de nuestra exclusiva selección de platos y bebidas, preparados con los mejores ingredientes de la tierra.</p>
+    </header>
 
     <div class="menu-sections-wrapper">
 
-        <section>
+        <!-- SECCIÓN: ENTRADAS -->
+        <section class="menu-category">
             <h2 class="category-title">🥟 Entradas</h2>
             <ul class="dishes-grid">
                 <li class="dish-card">
@@ -45,7 +51,8 @@
             </ul>
         </section>
 
-        <section>
+        <!-- SECCIÓN: PLATOS FUERTES -->
+        <section class="menu-category">
             <h2 class="category-title">🥩 Platos Fuertes</h2>
             <ul class="dishes-grid">
                 <li class="dish-card">
@@ -79,7 +86,8 @@
             </ul>
         </section>
 
-        <section>
+        <!-- SECCIÓN: BEBIDAS -->
+        <section class="menu-category">
             <h2 class="category-title">🍹 Bebidas y Cócteles</h2>
             <ul class="dishes-grid">
                 <li class="dish-card">
@@ -101,7 +109,7 @@
                         <span class="dish-name">Soda Saborizada</span>
                         <span class="dish-price">$12.000</span>
                     </div>
-                    <p class="dish-description">Refrescante con trozos de fruta natural (Rutos rojos, maracuyá o mango biche).</p>
+                    <p class="dish-description">Refrescante con trozos de fruta natural (Frutos rojos, maracuyá o mango biche).</p>
                 </li>
                 <li class="dish-card">
                     <div class="dish-header">
