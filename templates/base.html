@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ReserVa - Medellín{% endblock %}</title>
+    
+    <!-- CSS Global del proyecto -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+
+    <!-- SweetAlert2 para mensajes -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="dark-theme">
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="{% url 'inicio' %}"><h1>Reser<span>Va</span></h1></a>
+        </div>
+
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+                <li><a href="{% url 'ver_carta' %}">Menú</a></li>
+
+                {% if request.session.logueado and request.session.logueado.rol == "cliente" %}
+                    <li><a href="{% url 'mis_reservas' %}">Mis Reservas</a></li>
+                    <li><a href="{% url 'comentarios:crear_resena' %}">Reseñar</a></li>
+                {% endif %}
+
+                {% if request.session.logueado %}
+                    {% if request.session.logueado.rol != "admin" %}
+                        <li><a href="{% url 'crear_reserva' %}" class="btn-reserva">Reservar</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{% url 'iniciar_sesion' %}" class="btn-reserva">Reservar</a></li>
+                {% endif %}
+
+                {% if request.session.logueado %}
+                <li class="user-info">
+                    <span>Hola, {{ request.session.logueado.nombre }}</span>
+                    <a href="{% url 'cerrar_sesion' %}" class="btn-registro">Salir</a>
+                </li>
+                {% else %}
+                <li><a href="{% url 'iniciar_sesion' %}">Entrar</a></li>
+                <li><a href="{% url 'crear_usuario' %}" class="btn-registro">Registro</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="pie-pagina">
+        <p>&copy; 2026 ReserVa - Medellín. Todos los derechos reservados.</p>
+    </footer>
+
+    {% if messages %}
+    <script>
+        {% for message in messages %}
+        Swal.fire({
+            text: "{{ message }}",
+            icon: "{{ message.tags }}",
+            confirmButtonColor: "#D4AF37",
+            background: "#1a1a1a",
+            color: "#ffffff",
+            fontFamily: "'Montserrat', sans-serif"
+        });
+        {% endfor %}
+    </script>
+    {% endif %}
+</body>
+</html>

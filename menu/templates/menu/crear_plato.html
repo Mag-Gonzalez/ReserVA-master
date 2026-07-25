@@ -1,0 +1,251 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block title %}Agregar Nuevo Plato - ReserVa{% endblock %}
+
+{% block content %}
+
+<!-- ESTILOS ESPECÍFICOS PARA ESTE FORMULARIO (Garantiza que se vea premium sin tocar otros archivos) -->
+<style>
+    .admin-form-container {
+        max-width: 650px;
+        margin: 0 auto;
+        background: rgba(20, 20, 20, 0.6);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        border-radius: 16px;
+        padding: 3rem;
+        animation: fadeUp 0.6s ease-out;
+    }
+
+    .admin-form-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.2rem;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .admin-form-subtitle {
+        text-align: center;
+        color: #9ca3af;
+        font-size: 0.95rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .admin-form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .admin-form-label {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #9ca3af;
+        margin-bottom: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    .admin-form-input, 
+    .admin-form-textarea, 
+    .admin-form-select {
+        width: 100%;
+        padding: 0.9rem 1rem;
+        background: rgba(10, 10, 10, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
+
+    .admin-form-input:focus, 
+    .admin-form-textarea:focus, 
+    .admin-form-select:focus {
+        outline: none;
+        border-color: #D4AF37;
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        background: rgba(10, 10, 10, 1);
+    }
+
+    .admin-form-textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .admin-form-select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23D4AF37' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.5rem;
+    }
+
+    .admin-checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 2rem;
+        padding: 1rem 1.2rem;
+        background: rgba(212, 175, 55, 0.05);
+        border-radius: 8px;
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        transition: all 0.3s ease;
+    }
+
+    .admin-checkbox-group:hover {
+        background: rgba(212, 175, 55, 0.08);
+        border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .admin-checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: #D4AF37;
+        cursor: pointer;
+    }
+
+    .admin-checkbox-group label {
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .admin-btn-submit {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 2.5rem;
+        background: linear-gradient(135deg, #D4AF37, #E6C27A);
+        color: #050505;
+        border: none;
+        border-radius: 8px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .admin-btn-submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    }
+
+    .admin-btn-submit:active {
+        transform: translateY(-1px);
+    }
+
+    .admin-error-msg {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+        padding: 1rem 1.2rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        animation: shake 0.4s ease-in-out;
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<div class="admin-form-container">
+    <h2 class="admin-form-title">
+        <i class="bi bi-egg-fried" style="color: #D4AF37;"></i>
+        Agregar Nuevo Plato
+    </h2>
+    <p class="admin-form-subtitle">Completa la información para añadirlo a la carta del restaurante</p>
+
+    <!-- Mensaje de error estilizado -->
+    {% if error %}
+        <div class="admin-error-msg">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <span>{{ error }}</span>
+        </div>
+    {% endif %}
+
+    <!-- Formulario con funcionalidad 100% intacta -->
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="admin-form-group">
+            <label for="nombre" class="admin-form-label">Nombre del Plato</label>
+            <input 
+                type="text" 
+                id="nombre" 
+                name="nombre" 
+                class="admin-form-input" 
+                placeholder="Ej: Punta de Anca Premium" 
+                required
+            >
+        </div>
+
+        <div class="admin-form-group">
+            <label for="descripcion" class="admin-form-label">Descripción</label>
+            <textarea 
+                id="descripcion" 
+                name="descripcion" 
+                class="admin-form-textarea" 
+                placeholder="Describe los ingredientes y la preparación..."
+            ></textarea>
+        </div>
+
+        <div class="admin-form-group">
+            <label for="precio" class="admin-form-label">Precio ($)</label>
+            <input 
+                type="number" 
+                id="precio" 
+                name="precio" 
+                class="admin-form-input" 
+                placeholder="Ej: 42000" 
+                required
+            >
+        </div>
+
+        <div class="admin-form-group">
+            <label for="categoria" class="admin-form-label">Categoría</label>
+            <select id="categoria" name="categoria" class="admin-form-select">
+                <option value="entrada">Entrada</option>
+                <option value="fuerte" selected>Plato Fuerte</option>
+                <option value="bebida">Bebida</option>
+                <option value="postre">Postre</option>
+            </select>
+        </div>
+
+        <div class="admin-checkbox-group">
+            <input type="checkbox" id="destacado" name="destacado" value="true">
+            <label for="destacado">¿Destacar este producto en la carta?</label>
+        </div>
+
+        <button type="submit" class="admin-btn-submit">
+            <i class="bi bi-check-circle me-2"></i> Guardar Plato
+        </button>
+    </form>
+</div>
+
+{% endblock %}
