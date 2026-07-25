@@ -8,6 +8,11 @@
     
     <!-- CSS Global del proyecto -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+<<<<<<< HEAD
+=======
+    
+    <!-- CSS Extra solo para páginas que lo necesiten (como la landing o el menú) -->
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
     {% block extra_css %}{% endblock %}
 
     <!-- SweetAlert2 para mensajes -->
@@ -23,6 +28,7 @@
 
         <nav class="nav-menu">
             <ul class="nav-links">
+<<<<<<< HEAD
                 <li><a href="{% url 'inicio' %}">Inicio</a></li>
                 <li><a href="{% url 'ver_carta' %}">Menú</a></li>
 
@@ -47,6 +53,36 @@
                 {% else %}
                 <li><a href="{% url 'iniciar_sesion' %}">Entrar</a></li>
                 <li><a href="{% url 'crear_usuario' %}" class="btn-registro">Registro</a></li>
+=======
+                <!-- 1. INICIO -->
+                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+                
+                <!-- 2. MENÚ -->
+                <li><a href="{% url 'ver_carta' %}">Menú</a></li>
+
+                <!-- 3. RESERVAR (Dinámico según sesión) -->
+                {% if request.session.logueado and request.session.logueado.rol != "admin" %}
+                    <li><a href="{% url 'crear_reserva' %}" class="btn-reserva">Reservar</a></li>
+                {% elif not request.session.logueado %}
+                    <li><a href="{% url 'iniciar_sesion' %}" class="btn-reserva">Reservar</a></li>
+                {% endif %}
+
+                <!-- 4. ENTRAR / REGISTRO (O panel de usuario si ya está logueado) -->
+                {% if request.session.logueado %}
+                    <!-- Opciones extra solo para clientes -->
+                    {% if request.session.logueado.rol == "cliente" %}
+                        <li><a href="{% url 'mis_reservas' %}">Mis Reservas</a></li>
+                        <li><a href="{% url 'comentarios:crear_resena' %}">Reseñar</a></li>
+                    {% endif %}
+                    
+                    <li class="user-info">
+                        <span>Hola, {{ request.session.logueado.nombre }}</span>
+                        <a href="{% url 'cerrar_sesion' %}" class="btn-registro">Salir</a>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'iniciar_sesion' %}">Entrar</a></li>
+                    <li><a href="{% url 'crear_usuario' %}" class="btn-registro">Registro</a></li>
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
                 {% endif %}
             </ul>
         </nav>

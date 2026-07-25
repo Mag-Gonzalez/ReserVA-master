@@ -1,4 +1,5 @@
 /* ==========================================================================
+<<<<<<< HEAD
    PANEL DE ADMINISTRACIÓN PREMIUM - NIVEL SENIOR
    ========================================================================== */
 
@@ -12,12 +13,28 @@
     --admin-color-arena-glow: rgba(212, 175, 55, 0.4);
     --admin-text-primary: #ffffff;
     --admin-text-secondary: #9ca3af;
+=======
+   PANEL DE ADMINISTRACIÓN PREMIUM - ReserVa
+   ========================================================================== */
+
+:root {
+    --admin-bg-dark: #0a0a0a;
+    --admin-bg-sidebar: #0f0f0f;
+    --admin-bg-card: #161616;
+    --admin-color-vino: #4a0404;
+    --admin-color-vino-light: #722F37;
+    --admin-color-arena: #D4AF37;
+    --admin-color-arena-dim: rgba(212, 175, 55, 0.1);
+    --admin-text-primary: #ffffff;
+    --admin-text-secondary: #888888;
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
     --admin-font-sans: 'Montserrat', sans-serif;
     --admin-font-serif: 'Cormorant Garamond', serif;
 }
 
 body.admin-dark-theme {
     background-color: var(--admin-bg-dark);
+<<<<<<< HEAD
     background-image: 
         radial-gradient(circle at 15% 50%, rgba(74, 4, 4, 0.15) 0%, transparent 25%),
         radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 25%);
@@ -35,18 +52,42 @@ body.admin-dark-theme {
 
 /* ==========================================================================
    SIDEBAR CON EFECTO VIDRIO
+=======
+    color: var(--admin-text-primary);
+    font-family: var(--admin-font-sans);
+    margin: 0;
+    overflow: hidden; /* Evita scroll en el body, lo manejamos internamente */
+}
+
+/* ==========================================================================
+   1. LAYOUT PRINCIPAL
+   ========================================================================== */
+.admin-layout {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ==========================================================================
+   2. SIDEBAR (Menú Lateral Chimbita)
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
    ========================================================================== */
 .admin-sidebar {
     width: 280px;
     min-width: 280px;
+<<<<<<< HEAD
     background: rgba(10, 10, 10, 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+=======
+    background-color: var(--admin-bg-sidebar);
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
     border-right: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
     overflow-y: auto;
+<<<<<<< HEAD
     animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -66,32 +107,85 @@ body.admin-dark-theme {
     text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 .sidebar-logo span { color: var(--admin-color-arena); font-style: italic; }
+=======
+    transition: all 0.3s ease;
+}
+
+/* Logo y Badge */
+.sidebar-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.sidebar-logo-link {
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar-logo {
+    font-family: var(--admin-font-serif);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--admin-text-primary);
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.sidebar-logo span {
+    color: var(--admin-color-arena);
+    font-style: italic;
+}
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
 
 .admin-badge {
     display: inline-block;
     margin-top: 0.5rem;
     padding: 4px 12px;
+<<<<<<< HEAD
     background: linear-gradient(135deg, var(--admin-color-vino), var(--admin-color-vino-light));
+=======
+    background-color: var(--admin-color-vino);
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
     color: var(--admin-color-arena);
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.15em;
     border-radius: 20px;
+<<<<<<< HEAD
     border: 1px solid rgba(212, 175, 55, 0.3);
     box-shadow: 0 4px 15px rgba(74, 4, 4, 0.4);
+=======
+    border: 1px solid rgba(212, 175, 55, 0.2);
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
 }
 
 .sidebar-divider {
     height: 1px;
+<<<<<<< HEAD
     background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+=======
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
     margin: 0 0 1.5rem 0;
 }
 
 /* ==========================================================================
+<<<<<<< HEAD
    NAVEGACIÓN INTERACTIVA
    ========================================================================== */
 .sidebar-nav { display: flex; flex-direction: column; gap: 0.5rem; }
 
+=======
+   3. NAVEGACIÓN DEL SIDEBAR (Custom, sin Bootstrap feo)
+   ========================================================================== */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Items principales */
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
 .nav-item {
     display: flex;
     align-items: center;
@@ -99,14 +193,20 @@ body.admin-dark-theme {
     width: 100%;
     padding: 12px 16px;
     background: transparent;
+<<<<<<< HEAD
     border: 1px solid transparent;
     border-radius: 10px;
+=======
+    border: none;
+    border-radius: 8px;
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
     color: var(--admin-text-secondary);
     font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
     text-align: left;
     cursor: pointer;
+<<<<<<< HEAD
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -269,4 +369,215 @@ body.admin-dark-theme {
     .admin-layout { flex-direction: column; }
     .admin-sidebar { width: 100%; min-width: 100%; height: auto; max-height: 40vh; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
     .admin-topbar { padding: 1rem; flex-direction: column; height: auto; gap: 1rem; }
+=======
+    transition: all 0.25s ease;
+}
+
+.nav-item i:first-child {
+    font-size: 1.1rem;
+    color: var(--admin-text-secondary);
+    transition: color 0.25s ease;
+}
+
+/* Hover y Active en items principales */
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--admin-text-primary);
+}
+
+.nav-item:hover i:first-child {
+    color: var(--admin-color-arena);
+}
+
+.nav-item.active {
+    background-color: var(--admin-color-arena-dim);
+    color: var(--admin-color-arena);
+    border-left: 3px solid var(--admin-color-arena);
+}
+
+.nav-item.active i:first-child {
+    color: var(--admin-color-arena);
+}
+
+/* Icono de flecha del toggle */
+.toggle-icon {
+    margin-left: auto;
+    font-size: 0.8rem !important;
+    transition: transform 0.3s ease;
+}
+
+.nav-toggle[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
+    color: var(--admin-color-arena) !important;
+}
+
+.nav-toggle[aria-expanded="true"] {
+    color: var(--admin-text-primary) !important;
+}
+.nav-toggle[aria-expanded="true"] i:first-child {
+    color: var(--admin-color-arena) !important;
+}
+
+/* Sub-items (Desplegables) */
+.nav-subitems {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 0 8px 2.8rem; /* Indentación elegante */
+}
+
+.nav-subitem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.nav-subitem i {
+    font-size: 0.9rem;
+}
+
+.nav-subitem:hover {
+    color: var(--admin-color-arena);
+    background-color: rgba(212, 175, 55, 0.05);
+    padding-left: 16px; /* Efecto de deslizamiento "chimbita" */
+}
+
+/* ==========================================================================
+   4. TOPBAR (Barra Superior)
+   ========================================================================== */
+.admin-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--admin-bg-dark);
+    overflow: hidden;
+}
+
+.admin-topbar {
+    height: 70px;
+    background-color: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.topbar-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--admin-text-secondary);
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981; /* Verde esmeralda elegante */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.user-name {
+    color: var(--admin-text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: transparent;
+    color: var(--admin-color-arena);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: var(--admin-color-vino);
+    border-color: var(--admin-color-vino);
+    color: var(--admin-text-primary);
+}
+
+/* ==========================================================================
+   5. ÁREA DE CONTENIDO Y SCROLLBAR
+   ========================================================================== */
+.admin-content-area {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* Scrollbar personalizado elegante */
+.admin-sidebar::-webkit-scrollbar,
+.admin-content-area::-webkit-scrollbar {
+    width: 5px;
+}
+.admin-sidebar::-webkit-scrollbar-track,
+.admin-content-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+.admin-sidebar::-webkit-scrollbar-thumb,
+.admin-content-area::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+}
+.admin-sidebar::-webkit-scrollbar-thumb:hover,
+.admin-content-area::-webkit-scrollbar-thumb:hover {
+    background: var(--admin-color-arena);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .admin-layout {
+        flex-direction: column;
+    }
+    .admin-sidebar {
+        width: 100%;
+        min-width: 100%;
+        height: auto;
+        max-height: 40vh;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .admin-topbar {
+        padding: 1rem;
+        flex-direction: column;
+        height: auto;
+        gap: 1rem;
+    }
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
 }

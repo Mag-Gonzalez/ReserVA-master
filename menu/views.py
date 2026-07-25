@@ -7,8 +7,11 @@ def ver_carta(request):
 def crear_plato(request):
     return render(request,"menu/crear_plato.html")
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
 def actualizar_plato(request):
     pass
 

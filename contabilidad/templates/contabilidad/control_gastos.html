@@ -1,4 +1,5 @@
 {% extends 'base_admin.html' %}
+<<<<<<< HEAD
 {% load static %}
 
 {% block title %}Registrar Gasto - ReserVa{% endblock %}
@@ -220,5 +221,47 @@
         </div>
     </form>
 </div>
+=======
+
+{% block content %}
+
+<h1>Registrar Gasto</h1>
+
+<form action="{% url 'guardar_gasto' %}" method="POST">
+    {% csrf_token %}
+
+    <p>
+        <label>Concepto:</label>
+        <input type="text" name="concepto" required>
+    </p>
+
+    <p>
+        <label>Categoría:</label>
+        <select name="categoria" required>
+            <option value="INSUMOS">Insumos</option>
+            <option value="SERVICIOS">Servicios</option>
+            <option value="NOMINA">Nómina</option>
+            <option value="OTROS">Otros</option>
+        </select>
+    </p>
+
+    <p>
+        <label>Valor:</label>
+        <input type="number" name="valor" required>
+    </p>
+
+    <p>
+        <label>Método de Pago:</label>
+        <select name="metodo_pago" required>
+            <option value="EFECTIVO">Efectivo </option>
+            <option value="TRANSFERENCIA">Transferencia </option>
+            <option value="TARJETA">Tarjeta Débito/Crédito</option>
+        </select>
+    </p>
+
+    <button type="submit">Guardar Gasto</button>
+    <a href="{% url 'inicio_contabilidad' %}">Cancelar</a>
+</form>
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
 
 {% endblock %}

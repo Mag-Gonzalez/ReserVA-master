@@ -1,6 +1,7 @@
 {% extends 'base_admin.html' %}
 {% load static %}
 
+<<<<<<< HEAD
 {% block title %}Listado de Usuarios - ReserVa{% endblock %}
 
 {% block content %}
@@ -204,19 +205,35 @@
     </h2>
 
     <table id="tablaDeBryan" class="table-premium">
+=======
+{% block title %}Dashboard - ReserVa{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+<div class="container-fluid mt-4 text-white">
+    <h2 class="mb-4">Listado General de Usuarios</h2>
+
+    <table id="tablaDeBryan" class="table table-dark table-hover align-middle">
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
         <thead>
             <tr>
                 <th>Usuario</th>
                 <th>Nombre Completo</th>
                 <th>Correo Electrónico</th>
                 <th>Rol</th>
+<<<<<<< HEAD
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
+=======
+                <th>Estado</th> <th>Acciones</th> </tr>
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
         </thead>
         <tbody>
             {% for u in usuarios %}
                 <tr>
+<<<<<<< HEAD
                     <td><strong>{{ u.usuario }}</strong></td>
                     <td>{{ u.nombre }}</td>
                     <td>{{ u.email }}</td>
@@ -234,16 +251,38 @@
                             <span class="badge-premium badge-active">
                                 <i class="bi bi-check-circle-fill"></i> Activo
                             </span>
+=======
+                    <td>{{ u.usuario }}</td>
+                    <td>{{ u.nombre }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>
+                        <span class="badge bg-secondary">{{ u.rol }}</span>
+                    </td>
+                    <td>
+                        {% if "[SUSPENDIDO]" in u.nombre %}
+                            <span class="badge bg-danger"> Suspendido</span>
+                        {% else %}
+                            <span class="badge bg-success"> Activo</span>
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
                         {% endif %}
                     </td>
                     <td>
                         {% if "[SUSPENDIDO]" in u.nombre %}
+<<<<<<< HEAD
                             <a href="{% url 'cambiar_estado_usuario' u.id %}" class="btn-action btn-activate">
                                 <i class="bi bi-unlock"></i> Activar
                             </a>
                         {% else %}
                             <a href="{% url 'cambiar_estado_usuario' u.id %}" class="btn-action btn-suspend">
                                 <i class="bi bi-lock"></i> Suspender
+=======
+                            <a href="{% url 'cambiar_estado_usuario' u.id %}" class="btn btn-sm btn-success py-1 px-3" style="font-size: 0.85rem;">
+                                 Activar
+                            </a>
+                        {% else %}
+                            <a href="{% url 'cambiar_estado_usuario' u.id %}" class="btn btn-sm btn-outline-danger py-1 px-3" style="font-size: 0.85rem;">
+                                 Suspender
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
                             </a>
                         {% endif %}
                     </td>
@@ -253,7 +292,10 @@
     </table>
 </div>
 
+<<<<<<< HEAD
 <!-- Scripts de DataTables -->
+=======
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
@@ -263,6 +305,7 @@
         $('#tablaDeBryan').DataTable({
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"
+<<<<<<< HEAD
             },
             "pageLength": 10,
             "ordering": true,
@@ -272,6 +315,8 @@
             "drawCallback": function() {
                 // Pequeña animación cada vez que se cambia de página o se filtra
                 $('.table-premium tbody tr').css('animation', 'fadeUp 0.3s ease-out');
+=======
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
             }
         });
     });

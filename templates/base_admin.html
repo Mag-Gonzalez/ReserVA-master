@@ -6,12 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Panel de Control - ReserVa{% endblock %}</title>
 
+<<<<<<< HEAD
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- CSS DEL ADMIN -->
     <link rel="stylesheet" href="{% static 'css/base_admin.css' %}">
+=======
+    <!-- Bootstrap 5 & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- CSS Global y Específico del Admin -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -19,6 +30,10 @@
 <body class="admin-dark-theme">
 
     <div class="admin-layout">
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
         <!-- ==========================================
              BARRA LATERAL (SIDEBAR)
              ========================================== -->
@@ -107,6 +122,11 @@
              CONTENIDO PRINCIPAL
              ========================================== -->
         <div class="admin-main-content">
+<<<<<<< HEAD
+=======
+            
+            <!-- Top Navbar -->
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
             <header class="admin-topbar">
                 <div class="topbar-status">
                     <span class="status-dot"></span> 
@@ -120,16 +140,29 @@
                 </div>
             </header>
 
+<<<<<<< HEAD
             <main class="admin-content-area">
                 <!-- Aquí se inyectará el contenido del dashboard -->
                 {% block content %}{% endblock %}
             </main>
+=======
+            <!-- Área de Contenido con Scroll -->
+            <main class="admin-content-area">
+                {% block content %}
+                {% endblock %}
+            </main>
+
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<<<<<<< HEAD
+=======
+    <!-- Mensajes SweetAlert -->
+>>>>>>> 2ad86eca5a351f6ef790524eeba42b88b58ca80e
     {% if messages %}
     <script>
         {% for message in messages %}
